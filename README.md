@@ -6,24 +6,22 @@ npm install
 ```
 
 ### Compiles and hot-reloads for development
+
+Application run on port 8080
+
 ```
 npm run serve
+```
+
+### Run server
+
+Server run on port 3000
+
+```
+node server/server.js
 ```
 
 ### Compiles and minifies for production
 ```
 npm run build
 ```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
