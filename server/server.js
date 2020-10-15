@@ -1,7 +1,7 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var app = express()
-const userInfo = require('./userInfo.js')
+const userInfo = require('./modules/userInfo.js')
 
 const port = 3000
 
