@@ -17,7 +17,7 @@
           <h2>{{userData.name}}</h2>
         </template>
         <template #text>
-          <div style="height: 340px; margin-top:5px">
+          <div style="height: 340px; margin-top:5px; overflow-y: auto">
             <span>{{userData.username}}</span>
             <br>
             <br>
