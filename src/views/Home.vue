@@ -1,65 +1,14 @@
 <template>
-  <div id="home">
-    <div id="home-header">Bienvenido</div>
-    <div id="home-container">
-      <vs-card id="user-card" type="3">
-        <template #title>
-          <h3>Usuarios</h3>
-        </template>
-        <template #img>
-          <div style="background-color: #00aae4; border-radius: 15px">
-            <img :src="UserImage" alt />
-          </div>
-        </template>
-        <template #text>
-          <div class="description-container">
-            <p>Busca a un usuario por su nombre</p>
-            <vs-input v-model="username" placeholder="Nombre" />
-          </div>
-        </template>
-      </vs-card>
-    </div>
-  </div>
-
-  <!-- <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>-->
+  <HomeComponent />
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
-
-import UserImage from '@/assets/user.png'
-import Request from '@/api/request'
+import HomeComponent from '@/components/Home'
 
 export default {
-  name: 'Home',
+  name: 'HomeView',
   components: {
-    // HelloWorld
-  },
-  data () {
-    return {
-      UserImage,
-      username: ''
-    }
-  },
-  watch: {
-    username (val) {
-      this.searchByName(val)
-    }
-  },
-  methods: {
-    searchByName (username) {
-      Request.getUser(username)
-        .then((request) => {
-          console.log(request)
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-    }
+    HomeComponent
   }
 }
 </script>
