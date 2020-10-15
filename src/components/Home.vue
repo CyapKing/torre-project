@@ -37,23 +37,34 @@ export default {
   },
   watch: {
     username (val) {
-      console.log(val)
       clearTimeout(this.lastInput)
       this.lastInput = setTimeout(() => {
         this.searchByName(val)
-      }, 1300)
+      }, 1000)
     }
   },
   methods: {
     searchByName (username) {
-      Request.getUser(username)
-        .then((request) => {
-          this.$store.commit('User/setUserData', request.data)
-          this.$router.push({ name: 'UserProfile' })
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+      if (username) {
+        const loading = this.$vs.loading()
+        Request.getUser(username)
+          .then((request) => {
+            this.$store.commit('User/setUserData', request.data)
+            loading.close()
+            this.$router.push({ name: 'UserProfile' })
+          })
+          .catch(() => {
+            this.$vs.notification({
+              color: 'danger',
+              position: 'top-right',
+              title: 'Error de petición',
+              text: 'Hubo un error inesperado realizando la busqueda'
+            })
+          })
+          .finally(() => {
+            loading.close()
+          })
+      }
     }
   }
 }
